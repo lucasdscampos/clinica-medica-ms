@@ -1,6 +1,6 @@
-package br.edu.imepac.repositories;
+package br.edu.imepac.comum.repositories;
 
-import br.edu.imepac.models.Especialidade;
+import br.edu.imepac.comum.models.Especialidade;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
