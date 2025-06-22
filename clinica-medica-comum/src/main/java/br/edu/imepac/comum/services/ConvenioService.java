@@ -4,6 +4,7 @@ import br.edu.imepac.comum.dtos.convenio.ConvenioDto;
 import br.edu.imepac.comum.dtos.convenio.ConvenioRequest;
 import br.edu.imepac.comum.models.Convenio;
 import br.edu.imepac.comum.repositories.ConvenioRepository;
+import br.edu.imepac.comum.exceptions.NotFoundClinicaMedicaException;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -41,7 +42,7 @@ public class ConvenioService {
     public ConvenioDto buscarConvenioPorId(Long id) {
         log.info("Buscando convênio com ID: {}", id);
         Convenio convenio = convenioRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Convênio não encontrado com ID: " + id));
+                .orElseThrow(() -> new NotFoundClinicaMedicaException("Convênio não encontrado com ID: " + id));
         return modelMapper.map(convenio, ConvenioDto.class);
     }
 
@@ -49,9 +50,10 @@ public class ConvenioService {
         log.info("Atualizando convênio com ID: {}", id);
 
         Convenio convenioExistente = convenioRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Convênio não encontrado com ID: " + id));
+                .orElseThrow(() -> new NotFoundClinicaMedicaException("Convênio não encontrado com ID: " + id));
 
-        modelMapper.map(convenioDto, convenioExistente);
+        convenioExistente.setNome(convenioDto.getNome());
+        convenioExistente.setDescricao(convenioDto.getDescricao());
 
         Convenio convenioAtualizado = convenioRepository.save(convenioExistente);
         return modelMapper.map(convenioAtualizado, ConvenioDto.class);
@@ -60,7 +62,7 @@ public class ConvenioService {
     public void removerConvenio(Long id) {
         log.info("Removendo convênio com ID: {}", id);
         Convenio convenio = convenioRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Convênio não encontrado com ID: " + id));
+                .orElseThrow(() -> new NotFoundClinicaMedicaException("Convênio não encontrado com ID: " + id));
         convenioRepository.delete(convenio);
     }
 }
