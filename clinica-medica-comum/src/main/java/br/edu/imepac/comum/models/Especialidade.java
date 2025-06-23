@@ -20,4 +20,7 @@ public class Especialidade {
     @NotBlank(message = "O nome da especialidade é obrigatório.")
     @Column(nullable = false, unique = true)
     private String nome;
+
+    @Column(name = "descricao", nullable = true, length = 500)
+    private String descricao;
 }

@@ -10,4 +10,5 @@ import lombok.NoArgsConstructor;
 public class EspecialidadeDto {
     private Long id;
     private String nome;
+    private String descricao;
 }

@@ -9,4 +9,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class EspecialidadeRequest {
     private String nome;
+    private String descricao;
 }
