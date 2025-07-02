@@ -40,4 +40,9 @@ public class PerfilDto {
     private boolean atualizarProntuario;
     private boolean deletarProntuario;
     private boolean listarProntuario;
+    private boolean cadastrarPerfil;
+    private boolean lerPerfil;
+    private boolean atualizarPerfil;
+    private boolean deletarPerfil;
+    private boolean listarPerfil;
 }

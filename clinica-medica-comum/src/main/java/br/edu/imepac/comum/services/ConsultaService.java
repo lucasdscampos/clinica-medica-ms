@@ -39,8 +39,25 @@ public class ConsultaService {
     @Autowired
     private ConvenioRepository convenioRepository;
 
+    @Autowired
+    private PerfilService perfilService;
+
     public ConsultaDto adicionarConsulta(ConsultaRequest request) {
         log.info("Iniciando adição de nova consulta para paciente ID: {}", request.getPacienteId());
+
+        // Verificar se o atendente tem permissão para cadastrar consultas
+        if (request.getAtendenteUsuario() == null || request.getAtendenteSenha() == null) {
+            throw new IllegalArgumentException("Credenciais do atendente são obrigatórias para cadastrar consultas.");
+        }
+        
+        boolean temPermissao = perfilService.verificarPermissaoCadastrarConsulta(
+            request.getAtendenteUsuario(), 
+            request.getAtendenteSenha()
+        );
+        
+        if (!temPermissao) {
+            throw new SecurityException("Acesso negado. Apenas atendentes autorizados podem cadastrar consultas.");
+        }
 
         Paciente paciente = pacienteRepository.findById(request.getPacienteId())
                 .orElseThrow(() -> {
@@ -104,6 +121,20 @@ public class ConsultaService {
     public ConsultaDto atualizarConsulta(Long id, ConsultaRequest request) {
         log.info("Iniciando atualização da consulta com ID: {}", id);
 
+        // Verificar se o atendente tem permissão para atualizar consultas
+        if (request.getAtendenteUsuario() == null || request.getAtendenteSenha() == null) {
+            throw new IllegalArgumentException("Credenciais do atendente são obrigatórias para atualizar consultas.");
+        }
+        
+        boolean temPermissao = perfilService.verificarPermissaoAtualizarConsulta(
+            request.getAtendenteUsuario(), 
+            request.getAtendenteSenha()
+        );
+        
+        if (!temPermissao) {
+            throw new SecurityException("Acesso negado. Apenas atendentes autorizados podem atualizar consultas.");
+        }
+
         Consulta consultaExistente = consultaRepository.findById(id)
                 .orElseThrow(() -> {
                     log.warn("Consulta não encontrada para atualização com ID: {}", id);
@@ -163,8 +194,23 @@ public class ConsultaService {
         return modelMapper.map(updatedConsulta, ConsultaDto.class);
     }
 
-    public void removerConsulta(Long id) {
+    public void removerConsulta(Long id, String atendenteUsuario, Integer atendenteSenha) {
         log.info("Iniciando remoção da consulta com ID: {}", id);
+        
+        // Verificar se o atendente tem permissão para deletar consultas
+        if (atendenteUsuario == null || atendenteSenha == null) {
+            throw new IllegalArgumentException("Credenciais do atendente são obrigatórias para remover consultas.");
+        }
+        
+        boolean temPermissao = perfilService.verificarPermissaoDeletarConsulta(
+            atendenteUsuario, 
+            atendenteSenha
+        );
+        
+        if (!temPermissao) {
+            throw new SecurityException("Acesso negado. Apenas atendentes autorizados podem remover consultas.");
+        }
+        
         if (!consultaRepository.existsById(id)) {
             log.warn("Consulta não encontrada para remoção com ID: {}", id);
             throw new NotFoundClinicaMedicaException("Consulta não encontrada com ID: " + id);

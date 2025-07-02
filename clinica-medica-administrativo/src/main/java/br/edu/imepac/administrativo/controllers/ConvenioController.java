@@ -29,16 +29,18 @@ public class ConvenioController {
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ConvenioDto atualizarConvenio(@PathVariable Long id, @RequestBody ConvenioDto convenioDto) {
+    public ConvenioDto atualizarConvenio(@PathVariable Long id, @RequestBody ConvenioRequest convenioRequest) {
         log.info("Recebida requisição para atualizar convênio com ID: {}", id);
-        return convenioService.atualizarConvenio(id, convenioDto);
+        return convenioService.atualizarConvenio(id, convenioRequest);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void removerConvenio(@PathVariable Long id) {
+    public void removerConvenio(@PathVariable Long id, 
+                               @RequestParam String adminUsuario, 
+                               @RequestParam Integer adminSenha) {
         log.info("Recebida requisição para remover convênio com ID: {}", id);
-        convenioService.removerConvenio(id);
+        convenioService.removerConvenio(id, adminUsuario, adminSenha);
     }
 
     @GetMapping("/{id}")

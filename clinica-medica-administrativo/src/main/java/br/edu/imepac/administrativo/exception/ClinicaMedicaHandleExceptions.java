@@ -28,4 +28,16 @@ public class ClinicaMedicaHandleExceptions {
         log.error("Recurso não encontrado: " + e.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
     }
+    
+    @ExceptionHandler(SecurityException.class)
+    public ResponseEntity<String> handleSecurityException(SecurityException e) {
+        log.error("Violação de segurança: " + e.getMessage());
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.getMessage());
+    }
+    
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<String> handleIllegalArgumentException(IllegalArgumentException e) {
+        log.error("Argumento inválido: " + e.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+    }
 }

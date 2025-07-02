@@ -113,4 +113,19 @@ public class Perfil {
 
     @Column(name = "listar_prontuario", nullable = false)
     private boolean listarProntuario;
+
+    @Column(name = "cadastrar_perfil", nullable = false)
+    private boolean cadastrarPerfil;
+
+    @Column(name = "ler_perfil", nullable = false)
+    private boolean lerPerfil;
+
+    @Column(name = "atualizar_perfil", nullable = false)
+    private boolean atualizarPerfil;
+
+    @Column(name = "deletar_perfil", nullable = false)
+    private boolean deletarPerfil;
+
+    @Column(name = "listar_perfil", nullable = false)
+    private boolean listarPerfil;
 }

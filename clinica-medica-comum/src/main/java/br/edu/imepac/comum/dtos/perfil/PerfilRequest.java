@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PerfilRequest {
+    private String adminUsuario;
+    private Integer adminSenha;
     private String nome;
     private boolean cadastrarFuncionario;
     private boolean lerFuncionario;
@@ -39,4 +41,9 @@ public class PerfilRequest {
     private boolean atualizarProntuario;
     private boolean deletarProntuario;
     private boolean listarProntuario;
+    private boolean cadastrarPerfil;
+    private boolean lerPerfil;
+    private boolean atualizarPerfil;
+    private boolean deletarPerfil;
+    private boolean listarPerfil;
 }

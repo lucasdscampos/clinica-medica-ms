@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class EspecialidadeRequest {
+    private String adminUsuario;
+    private Integer adminSenha;
     private String nome;
     private String descricao;
 }
