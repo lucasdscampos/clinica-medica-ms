@@ -33,9 +33,26 @@ public class FuncionarioService {
 
     @Autowired
     private EspecialidadeRepository especialidadeRepository;
+    
+    @Autowired
+    private PerfilService perfilService;
 
     public FuncionarioDto adicionarFuncionario(FuncionarioRequest request) {
         log.info("Adicionando novo funcionário: {}", request.getNome());
+        
+        // Verificar se o administrador tem permissão para cadastrar funcionários
+        if (request.getAdminUsuario() == null || request.getAdminSenha() == null) {
+            throw new IllegalArgumentException("Credenciais do administrador são obrigatórias para cadastrar funcionários.");
+        }
+        
+        boolean temPermissao = perfilService.verificarPermissaoCadastrarFuncionario(
+            request.getAdminUsuario(), 
+            request.getAdminSenha()
+        );
+        
+        if (!temPermissao) {
+            throw new SecurityException("Acesso negado. Apenas administradores podem cadastrar funcionários.");
+        }
 
         Perfil perfil = perfilRepository.findById(request.getIdPerfil())
                 .orElseThrow(() -> new NotFoundClinicaMedicaException("Perfil não encontrado com o ID: " + request.getIdPerfil()));

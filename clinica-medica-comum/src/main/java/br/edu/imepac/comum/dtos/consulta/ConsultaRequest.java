@@ -10,6 +10,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ConsultaRequest {
+    private String atendenteUsuario;
+    private Integer atendenteSenha;
     private LocalDateTime dataHorario;
     private String sintomas;
     private Boolean eRetorno;

@@ -9,6 +9,8 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 public class FuncionarioRequest {
+    private String adminUsuario;
+    private Integer adminSenha;
     private String usuario;
     private Integer senha;
     private String nome;
