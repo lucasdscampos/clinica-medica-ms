@@ -22,31 +22,37 @@ public class EspecialdadeController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public EspecialidadeDto criarEspecialidade(@RequestBody EspecialidadeRequest especialidadeRequest) {
-        log.info("Criando especialidade - controller: {}", especialidadeRequest);
+        log.info("Recebida requisição para criar especialidade: {}", especialidadeRequest.getNome());
         return especialidadeService.adicionarEspecialidade(especialidadeRequest);
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public EspecialidadeDto atualizarEspecialidade(@PathVariable Long id, @RequestBody EspecialidadeDto especialidadeDto) {
-        return especialidadeService.atualizarEspecialidade(id, especialidadeDto);
+    public EspecialidadeDto atualizarEspecialidade(@PathVariable Long id, @RequestBody EspecialidadeRequest especialidadeRequest) {
+        log.info("Recebida requisição para atualizar especialidade com ID: {}", id);
+        return especialidadeService.atualizarEspecialidade(id, especialidadeRequest);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void removerEspecialidade(@PathVariable Long id) {
-        especialidadeService.removerEspecialidade(id);
+    public void removerEspecialidade(@PathVariable Long id,
+                                   @RequestParam String adminUsuario,
+                                   @RequestParam Integer adminSenha) {
+        log.info("Recebida requisição para remover especialidade com ID: {}", id);
+        especialidadeService.removerEspecialidade(id, adminUsuario, adminSenha);
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public EspecialidadeDto buscarEspecialidadePorId(@PathVariable Long id) {
+        log.info("Recebida requisição para buscar especialidade com ID: {}", id);
         return especialidadeService.buscarEspecialidadePorId(id);
     }
 
     @GetMapping("/listar")
     @ResponseStatus(HttpStatus.OK)
     public List<EspecialidadeDto> listarEspecialidades() {
+        log.info("Recebida requisição para listar todas as especialidades.");
         return especialidadeService.listarEspecialidades();
     }
 }
