@@ -26,21 +26,21 @@ public class Configurations {
                     mapper.skip(Funcionario::setId);
                     mapper.skip(Funcionario::setPerfil);
                     mapper.skip(Funcionario::setEspecialidade);
-                    // Ignorar campos de autenticação do administrador
-                    mapper.skip((dest, v) -> dest.setUsuario(null)); // será mapeado corretamente pelo campo 'usuario'
-                });
+                    mapper.skip(Funcionario::setTipoFuncionario);
+                })
+                .implicitMappings();
 
         modelMapper.createTypeMap(ConvenioRequest.class, Convenio.class)
                 .addMappings(mapper -> {
                     mapper.skip(Convenio::setId);
-                    // Os campos adminUsuario e adminSenha do ConvenioRequest não são mapeados para o modelo Convenio
-                });
+                })
+                .implicitMappings();
 
         modelMapper.createTypeMap(PerfilRequest.class, Perfil.class)
                 .addMappings(mapper -> {
                     mapper.skip(Perfil::setId);
-                    // Os campos adminUsuario e adminSenha do PerfilRequest não são mapeados para o modelo Perfil
-                });
+                })
+                .implicitMappings();
 
         return modelMapper;
     }

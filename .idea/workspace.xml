@@ -5,19 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bf63e5a7-e824-4912-afcd-e78d3351688e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/clinica-medica-atendimento/src/main/java/br/edu/imepac/atendimento/ClinicaMedicaAtendimentoApp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/clinica-medica-atendimento/src/main/java/br/edu/imepac/atendimento/config/Configurations.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/clinica-medica-atendimento/src/main/java/br/edu/imepac/atendimento/controllers/ProntuarioController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/clinica-medica-atendimento/src/main/java/br/edu/imepac/atendimento/exception/AuthenticationClinicaMedicaException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/clinica-medica-atendimento/src/main/java/br/edu/imepac/atendimento/exception/ClinicaMedicaHandleExceptions.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/clinica-medica-atendimento/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/clinica-medica-comum/src/main/java/br/edu/imepac/comum/dtos/prontuario/ProntuarioDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/clinica-medica-comum/src/main/java/br/edu/imepac/comum/dtos/prontuario/ProntuarioRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/clinica-medica-comum/src/main/java/br/edu/imepac/comum/models/Prontuario.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/clinica-medica-comum/src/main/java/br/edu/imepac/comum/repositories/ProntuarioRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/clinica-medica-comum/src/main/java/br/edu/imepac/comum/services/ProntuarioService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clinica-medica-atendimento/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/clinica-medica-atendimento/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AUTORIZACAO_PERFIS_ADMIN.md" beforeDir="false" afterPath="$PROJECT_DIR$/AUTORIZACAO_PERFIS_ADMIN.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clinica-medica-administrativo/src/main/java/br/edu/imepac/administrativo/config/Configurations.java" beforeDir="false" afterPath="$PROJECT_DIR$/clinica-medica-administrativo/src/main/java/br/edu/imepac/administrativo/config/Configurations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clinica-medica-comum/src/main/java/br/edu/imepac/comum/services/FuncionarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/clinica-medica-comum/src/main/java/br/edu/imepac/comum/services/FuncionarioService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

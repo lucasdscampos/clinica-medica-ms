@@ -154,7 +154,6 @@ O sistema agora implementa uma regra de segurança onde **somente administradore
   "nome": "Recepcionista",
   "cadastrarFuncionario": false,
   "lerFuncionario": true
-  // ... outros campos de permissão
 }
 ```
 
@@ -166,7 +165,6 @@ O sistema agora implementa uma regra de segurança onde **somente administradore
   "nome": "Recepcionista Senior",
   "cadastrarFuncionario": false,
   "lerFuncionario": true
-  // ... outros campos de permissão
 }
 ```
 
